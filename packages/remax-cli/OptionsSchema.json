@@ -48,6 +48,9 @@
     },
     "UNSAFE_wechatTemplateDepth": {
       "type": ["number", "object"]
+    },
+    "UNSAFE_extractOnlyCollectedComponents": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false

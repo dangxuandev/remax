@@ -78,17 +78,20 @@ const Store = {
     return component.id;
   },
 
-  getCollectedComponents() {
-    this.registeredHostComponents.forEach((component, key) => {
-      if (!this.collectedComponents.has(key)) {
-        this.collectedComponents.set(key, {
-          id: key,
-          props: unique(component.props).sort(),
-          additional: component.additional,
-        });
-      }
-    });
-    return this.collectedComponents;
+  getCollectedComponents(onlyCollectedComponents = false) {
+    const resComponents = new Map(this.collectedComponents);
+    if (!onlyCollectedComponents) {
+      this.registeredHostComponents.forEach((component, key) => {
+        if (!this.collectedComponents.has(key)) {
+          resComponents.set(key, {
+            id: key,
+            props: unique(component.props).sort(),
+            additional: component.additional,
+          });
+        }
+      });
+    }
+    return resComponents;
   },
 
   generateTemplateId(filename: string) {

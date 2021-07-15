@@ -29,6 +29,7 @@ export interface BuildOptions {
   rootDir: string;
   compressTemplate?: boolean;
   UNSAFE_wechatTemplateDepth: number | { [key: string]: number };
+  UNSAFE_extractOnlyCollectedComponents?: boolean;
   configWebpack?: (params: { config: WebpackConfig; webpack: any }) => void;
   plugins: Plugin[];
   port?: number;

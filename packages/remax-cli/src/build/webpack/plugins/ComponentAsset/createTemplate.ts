@@ -8,7 +8,7 @@ import { slash } from '@remax/shared';
 import { getUsingComponents } from '../getUsingComponents';
 
 export function createRenderOptions(componentPath: string, compilation: compilation.Compilation, options: Options) {
-  const components = new Map(Store.getCollectedComponents());
+  const components = new Map(Store.getCollectedComponents(options.UNSAFE_extractOnlyCollectedComponents));
 
   getUsingComponents(componentPath, compilation, options).forEach(component => {
     components.set(component.id, {

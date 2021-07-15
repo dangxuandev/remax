@@ -17,7 +17,7 @@ export function createRenderOptions(
   options: Options,
   filter = true
 ) {
-  const components = new Map(Store.getCollectedComponents());
+  const components = new Map(Store.getCollectedComponents(options.UNSAFE_extractOnlyCollectedComponents));
 
   if (filter) {
     getUsingComponents(page, compilation, options).forEach(component => {
@@ -88,7 +88,7 @@ export async function createBaseTemplate(
     return null;
   }
 
-  const components = new Map(Store.getCollectedComponents());
+  const components = new Map(Store.getCollectedComponents(options.UNSAFE_extractOnlyCollectedComponents));
 
   pages.forEach(page => {
     if (page instanceof PageEntry) {
